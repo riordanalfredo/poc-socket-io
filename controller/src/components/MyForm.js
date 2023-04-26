@@ -5,19 +5,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 
 export function MyForm() {
-  // const [value, setValue] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
   const [displayType, setDisplayType] = useState("");
-
-  // function onSubmit(event) {
-  //   event.preventDefault();
-
-  //   setIsLoading(true);
-
-  //   socket.timeout(5000).emit("create-event", value, () => {
-  //     setIsLoading(false);
-  //   });
-  // }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -35,7 +23,7 @@ export function MyForm() {
 
   return (
     <>
-      <Card style={{ width: "18rem", marginTop: "10px" }}>
+      <Card style={{ width: "18rem", margin: "20px" }}>
         <Card.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="displayType">
@@ -56,6 +44,15 @@ export function MyForm() {
                 label="Map display"
                 value="map"
                 checked={displayType === "map"}
+                onChange={(e) => setDisplayType(e.target.value)}
+              />
+              <Form.Check
+                type="radio"
+                name="displayType"
+                id="youtubeDisplay"
+                label="Youtube video display"
+                value="youtube"
+                checked={displayType === "youtube"}
                 onChange={(e) => setDisplayType(e.target.value)}
               />
             </Form.Group>

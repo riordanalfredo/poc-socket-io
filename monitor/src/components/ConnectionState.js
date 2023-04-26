@@ -1,5 +1,12 @@
 import React from "react";
 
 export function ConnectionState({ isConnected }) {
-  return <p>State: {"" + isConnected}</p>;
+  return (
+    <>
+      <p>
+        This is visualisation monitor screen. <br />
+        Connection state to socket server: {"" + isConnected}
+      </p>
+    </>
+  );
 }

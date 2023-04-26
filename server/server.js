@@ -6,12 +6,12 @@ const io = new Server(3000, {
 });
 
 io.on("connection", (socket) => {
-  console.log(socket.id);
+  console.log("Socket.io connected to socket: " + socket.id);
 
-  socket.on("create-event", (value) => {
-    console.log("Received foo event: " + value);
-    io.emit("foo", value);
-  });
+  // socket.on("create-event", (value) => {
+  //   console.log("Received foo event: " + value);
+  //   io.emit("foo", value);
+  // });
 
   socket.on("from-controller", (value) => {
     console.log("Received from controller: " + value);
