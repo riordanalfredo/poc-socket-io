@@ -29,3 +29,7 @@ This repo intended to show the concept of using socket.io, in order to use a rem
    npm install
    npm run start
    ```
+
+# How it should look like
+
+The controller and monitor in this repo should look similar to the screenshot. After choosing display type, press submit button on controller, the monitor screen should update accordingly.
