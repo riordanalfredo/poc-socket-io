@@ -33,3 +33,5 @@ This repo intended to show the concept of using socket.io, in order to use a rem
 # How it should look like
 
 The controller and monitor in this repo should look similar to the screenshot. After choosing display type, press submit button on controller, the monitor screen should update accordingly.
+
+<img width="1350" alt="image" src="https://user-images.githubusercontent.com/51945335/234727412-c811eb1c-33ef-4ed8-9e9c-e6be99afeecf.png">
