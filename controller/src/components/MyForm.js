@@ -54,6 +54,8 @@ export function MyForm() {
     setSelectedVis(selectedVis.filter((id) => id !== vis.id));
   };
 
+  const hideOtherComponent = true;
+
   return (
     <>
       <div
