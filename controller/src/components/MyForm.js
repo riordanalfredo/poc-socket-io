@@ -287,6 +287,21 @@ export function MyForm() {
         </Modal.Body>
       </Modal>
 
+      <div
+        style={{
+          display: "flex",
+          overflowX: "auto",
+          border: "1px solid lightgray",
+          borderRadius: "5px",
+          padding: "10px",
+          maxWidth: "100vw",
+          maxHeight: "35vh",
+          margin: "20px",
+        }}
+      >
+        <Image src={timelineVis} style={{ width: "90vw" }}></Image>
+      </div>
+
       {!hideOtherComponent && (
         <Card style={{ width: "18rem", margin: "20px" }}>
           <Card.Header>This component connected to socket io</Card.Header>
