@@ -27,10 +27,12 @@ export default function App() {
     };
   }, []);
 
+  const hideConnectButton = true;
+
   return (
     <div className="App">
       <ConnectionState isConnected={isConnected} />
-      <ConnectionManager />
+      {!hideConnectButton && <ConnectionManager />}
       <MyForm />
     </div>
   );

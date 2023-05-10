@@ -38,10 +38,13 @@ export default function App() {
     };
   }, []);
 
+  const hideConnectButton = true;
+
   return (
     <div className="App">
       <ConnectionState isConnected={isConnected} />
-      <ConnectionManager />
+      {!hideConnectButton && <ConnectionManager />}
+
       <Card
         style={{
           width: "40rem",

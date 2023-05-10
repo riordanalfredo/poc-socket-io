@@ -50,7 +50,7 @@ export function MyForm() {
                 type="radio"
                 name="displayType"
                 id="youtubeDisplay"
-                label="Youtube video display"
+                label="Intro video display"
                 value="youtube"
                 checked={displayType === "youtube"}
                 onChange={(e) => setDisplayType(e.target.value)}
