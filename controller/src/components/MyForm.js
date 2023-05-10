@@ -6,12 +6,14 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
+import Modal from "react-bootstrap/Modal";
 import communicationVis from "../images/communication-vis.png";
 import mapVis from "../images/map-vis.png";
 import videoVis from "../images/video-vis.png";
 import timelineVis from "../images/timeline-vis.png";
 import behaviourVis from "../images/behaviour-vis.png";
 import keywordVis from "../images/keyword-vis.png";
+import samplePreview from "../images/sample-preview.png";
 import { FaBackward, FaForward, FaPlay, FaPause, FaRedo } from "react-icons/fa";
 
 const visualisations = [
@@ -86,6 +88,18 @@ export function MyForm() {
     setPlaybackRate(rate);
     // Add code to change playback rate
   };
+
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
+
+  const showPreviewModalPressed = (visSelected) => {
+    console.log(visSelected);
+    setShowPreviewModal(true);
+  };
+
+  const hidePreviewModal = () => {
+    setShowPreviewModal(false);
+  };
+
   const hideOtherComponent = true;
 
   return (
@@ -164,8 +178,13 @@ export function MyForm() {
                 visualisation before continuing.
               </div>
             )}
-            <Button variant="link" onClick={() => {}}>
-              Preview
+            <Button
+              variant="link"
+              onClick={() => {
+                showPreviewModalPressed(vis);
+              }}
+            >
+              Preview if selected
             </Button>
           </div>
         ))}
@@ -258,6 +277,15 @@ export function MyForm() {
           </Dropdown>
         </ButtonGroup>
       </div>
+
+      <Modal show={showPreviewModal} onHide={hidePreviewModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Preview if you selected the visualisation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Image src={samplePreview} fluid />
+        </Modal.Body>
+      </Modal>
 
       {!hideOtherComponent && (
         <Card style={{ width: "18rem", margin: "20px" }}>
