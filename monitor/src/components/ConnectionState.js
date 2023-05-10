@@ -3,7 +3,7 @@ import React from "react";
 export function ConnectionState({ isConnected }) {
   return (
     <>
-      <p>Connection: {"" + isConnected}</p>
+      <p style={{ fontSize: "8px" }}>Connection: {"" + isConnected}</p>
     </>
   );
 }
