@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { socket } from "../socket";
 import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
@@ -10,6 +12,7 @@ import videoVis from "../images/video-vis.png";
 import timelineVis from "../images/timeline-vis.png";
 import behaviourVis from "../images/behaviour-vis.png";
 import keywordVis from "../images/keyword-vis.png";
+import { FaBackward, FaForward, FaPlay, FaPause, FaRedo } from "react-icons/fa";
 
 const visualisations = [
   // Fill with your real data
@@ -54,6 +57,35 @@ export function MyForm() {
     setSelectedVis(selectedVis.filter((id) => id !== vis.id));
   };
 
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [playbackRate, setPlaybackRate] = useState(1);
+
+  const play = () => {
+    setIsPlaying(true);
+    // Add code to play media
+  };
+
+  const pause = () => {
+    setIsPlaying(false);
+    // Add code to pause media
+  };
+
+  const skipBack = () => {
+    // Add code to skip back 5 seconds
+  };
+
+  const skipForward = () => {
+    // Add code to skip forward 5 seconds
+  };
+
+  const startFromBeginning = () => {
+    // Add code to start from beginning
+  };
+
+  const changePlaybackRate = (rate) => {
+    setPlaybackRate(rate);
+    // Add code to change playback rate
+  };
   const hideOtherComponent = true;
 
   return (
@@ -137,6 +169,94 @@ export function MyForm() {
             </Button>
           </div>
         ))}
+      </div>
+
+      <div
+        style={{
+          marginTop: "-10px",
+          marginBottom: "-20px",
+          marginLeft: "20px",
+        }}
+      >
+        Playback controller:
+      </div>
+
+      <div
+        style={{
+          border: "1px solid lightgray",
+          borderRadius: "5px",
+          padding: "10px",
+          maxWidth: "18vw",
+          maxHeight: "50vh",
+          margin: "20px",
+        }}
+      >
+        <ButtonGroup vertical>
+          <Button
+            variant="outline-dark"
+            onClick={startFromBeginning}
+            style={{ borderRadius: "5px", height: "62px" }}
+          >
+            <FaRedo />
+            <br />
+            Restart
+          </Button>
+          <Button
+            variant="outline-dark"
+            onClick={skipBack}
+            style={{ borderRadius: "5px", height: "62px" }}
+          >
+            <FaBackward />
+            <br />
+            Back 5s
+          </Button>
+          <Button
+            variant="outline-dark"
+            onClick={isPlaying ? pause : play}
+            style={{ borderRadius: "5px", height: "62px" }}
+          >
+            {isPlaying ? (
+              <>
+                <FaPause />
+                <br />
+                Pause
+              </>
+            ) : (
+              <>
+                <FaPlay />
+                <br />
+                Play
+              </>
+            )}
+          </Button>
+          <Button
+            variant="outline-dark"
+            onClick={skipForward}
+            style={{ borderRadius: "5px", height: "62px" }}
+          >
+            <FaForward />
+            <br />
+            Forward 5s
+          </Button>
+          <Dropdown
+            onSelect={(eventKey) =>
+              changePlaybackRate(parseFloat(eventKey || "1"))
+            }
+          >
+            <Dropdown.Toggle
+              variant="outline-dark"
+              style={{ borderRadius: "5px", height: "62px" }}
+            >
+              Speed: {playbackRate}x
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item eventKey="0.5">0.5x</Dropdown.Item>
+              <Dropdown.Item eventKey="1">1x</Dropdown.Item>
+              <Dropdown.Item eventKey="1.5">1.5x</Dropdown.Item>
+              <Dropdown.Item eventKey="2">2x</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </ButtonGroup>
       </div>
 
       {!hideOtherComponent && (
