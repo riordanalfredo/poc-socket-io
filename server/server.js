@@ -1,6 +1,6 @@
 const { Server } = require("socket.io");
 
-// listen to port 3000
+// listen on port 3000
 const io = new Server(3000, {
   cors: { origin: "*" },
 });
@@ -16,5 +16,6 @@ io.on("connection", (socket) => {
   socket.on("from-controller", (value) => {
     console.log("Received from controller: " + value);
     io.emit("to-monitor", value);
+    console.log("Broadcasted the signal above to monitor");
   });
 });
