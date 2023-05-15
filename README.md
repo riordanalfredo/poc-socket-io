@@ -4,7 +4,7 @@ This repo intended to show the concept of using socket.io, in order to use a rem
 
 # How to run this locally
 
-1. Run the server **first** (to make sure it is running on port 3000)
+1. ~~Run the server **first** (to make sure it is running on port 3000)~~ (The server is hosted)
 
    ```
    cd server
