@@ -13,9 +13,15 @@ io.on("connection", (socket) => {
   //   io.emit("foo", value);
   // });
 
-  socket.on("from-controller", (value) => {
-    console.log("Received from controller: " + value);
-    io.emit("to-monitor", value);
+  // socket.on("from-controller", (value) => {
+  //   console.log("Received from controller: " + value);
+  //   io.emit("to-monitor", value);
+  //   console.log("Broadcasted the signal above to monitor");
+  // });
+
+  socket.on("send-disp-list", (list) => {
+    console.log("Received from controller: " + list);
+    io.emit("receive-disp-list", list);
     console.log("Broadcasted the signal above to monitor");
   });
 });
