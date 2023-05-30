@@ -3,6 +3,8 @@ import { socket } from "./socket";
 import { ConnectionState } from "./components/ConnectionState";
 import { ConnectionManager } from "./components/ConnectionManager";
 import { MyForm } from "./components/MyForm";
+import ButtonGroup from "react-bootstrap/esm/ButtonGroup";
+import Button from "react-bootstrap/esm/Button";
 
 export default function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
@@ -33,6 +35,19 @@ export default function App() {
     <div className="App">
       <ConnectionState isConnected={isConnected} />
       {!hideConnectButton && <ConnectionManager />}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+        }}
+      >
+        <ButtonGroup>
+          <Button variant="light">Tagging</Button>
+          <Button variant="primary">Controller</Button>
+        </ButtonGroup>
+      </div>
+
       <MyForm />
     </div>
   );
