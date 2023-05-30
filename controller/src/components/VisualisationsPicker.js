@@ -16,10 +16,10 @@ import Row from "react-bootstrap/esm/Col";
 
 const visualisations = [
   // Fill with your real data
-  { id: "videoVis", label: "video", description: "", imageUrl: videoVis },
+  { id: "videoVis", label: "Wide Video", description: "", imageUrl: videoVis },
   {
     id: "mapVis",
-    label: "floor map",
+    label: "Floor map",
     description: "floor map with audio projection",
     imageUrl: mapVis,
   },
@@ -158,7 +158,7 @@ const VisualisationsPicker = () => {
                         ? 0.5
                         : 1,
                     padding: "2px",
-                    width: 200,
+                    width: 300,
                   }}
                 >
                   {vis.label}
@@ -190,7 +190,7 @@ const VisualisationsPicker = () => {
                     setPreview(vis);
                   }}
                 >
-                  Preview if selected
+                  Preview
                 </Button>
               </div>
             ))}
@@ -200,7 +200,7 @@ const VisualisationsPicker = () => {
               {preview !== null && (
                 <div>
                   <p>{preview.label}</p>
-                  <Image src={preview.imageUrl} style={{ width: "175px" }} />
+                  <Image src={preview.imageUrl} style={{ height: "25vh" }} />
                 </div>
               )}
             </div>
