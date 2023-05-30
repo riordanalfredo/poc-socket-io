@@ -43,8 +43,8 @@ export default function App() {
         }}
       >
         <ButtonGroup>
-          <Button variant="light">Tagging</Button>
-          <Button variant="primary">Controller</Button>
+          <Button variant="light">Simulation</Button>
+          <Button variant="primary">Debriefing</Button>
         </ButtonGroup>
       </div>
 

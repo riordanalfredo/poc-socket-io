@@ -1,7 +1,7 @@
 // See https://socket.io/how-to/use-with-react for more
 
 import { io } from "socket.io-client";
-const IP_ADDRESS = "49.127.75.210";
+const IP_ADDRESS = "172.20.10.2";
 // "192.168.20.29";
 // "undefined" means the URL will be computed from the `window.location` object
 const URL =

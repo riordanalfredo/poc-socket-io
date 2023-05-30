@@ -67,7 +67,7 @@ export function MyForm() {
       </div>
 
       {/* PLAYBACK CONTROLLER */}
-      <div
+      {/* <div
         style={{
           display: "flex",
           justifyContent: "center",
@@ -126,7 +126,7 @@ export function MyForm() {
             </Dropdown.Menu>
           </Dropdown>
         </ButtonGroup>
-      </div>
+      </div> */}
 
       <Modal show={showPreviewModal} onHide={hidePreviewModal}>
         <Modal.Header closeButton>
@@ -142,14 +142,76 @@ export function MyForm() {
         style={{
           display: "flex",
           overflowX: "auto",
+          flexDirection: "column",
           border: "1px solid lightgray",
           borderRadius: "5px",
           padding: "10px",
           maxWidth: "100vw",
-          maxHeight: "35vh",
+          maxHeight: "40vh",
           margin: "20px",
         }}
       >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            border: "1px solid lightgray",
+            borderRadius: "1em",
+            padding: "10px",
+            // maxWidth: "18vw",
+            maxHeight: "50vh",
+            margin: "20px",
+          }}
+        >
+          <ButtonGroup horizontal>
+            <Button variant="dark" onClick={startFromBeginning}>
+              <FaRedo />
+              <br />
+              Restart
+            </Button>
+            <Button variant="outline-dark" onClick={skipBack}>
+              <FaBackward />
+              <br />
+              Back 5s
+            </Button>
+            <Button variant="outline-dark" onClick={isPlaying ? pause : play}>
+              {isPlaying ? (
+                <>
+                  <FaPause />
+                  <br />
+                  Pause
+                </>
+              ) : (
+                <>
+                  <FaPlay />
+                  <br />
+                  Play
+                </>
+              )}
+            </Button>
+            <Button variant="outline-dark" onClick={skipForward}>
+              <FaForward />
+              <br />
+              Forward 5s
+            </Button>
+            <Dropdown
+              onSelect={(eventKey) =>
+                changePlaybackRate(parseFloat(eventKey || "1"))
+              }
+            >
+              <Dropdown.Toggle variant="outline-dark">
+                Speed: {playbackRate}x
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item eventKey="0.5">0.5x</Dropdown.Item>
+                <Dropdown.Item eventKey="1">1x</Dropdown.Item>
+                <Dropdown.Item eventKey="1.5">1.5x</Dropdown.Item>
+                <Dropdown.Item eventKey="2">2x</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </ButtonGroup>
+        </div>
         <Image src={timelineVis} style={{ width: "90vw" }}></Image>
       </div>
 

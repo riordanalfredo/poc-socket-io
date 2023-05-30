@@ -114,17 +114,18 @@ const VisualisationsPicker = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            overflowY: "auto",
+
             justifyContent: "center",
             border: "1px solid lightgray",
             borderRadius: "5px",
             padding: "10px",
             maxWidth: "100vw",
-            maxHeight: "35vh",
+            maxHeight: "vh",
             margin: "20px",
           }}
         >
-          <Col>
+          <Col align={"center"} style={{ overflowY: "auto" }}>
+            <h3>VISUALISATIONS</h3>
             {visualisations.map((vis) => (
               <div
                 key={vis.id}
@@ -132,7 +133,7 @@ const VisualisationsPicker = () => {
                   display: "inline-block",
                   margin: "3px",
                   position: "relative",
-                  width: "40vw",
+                  width: "45vw",
                 }}
               >
                 <Button
@@ -159,6 +160,8 @@ const VisualisationsPicker = () => {
                         : 1,
                     padding: "2px",
                     width: 300,
+                    height: 45,
+                    marginRight: 10,
                   }}
                 >
                   {vis.label}
@@ -185,22 +188,30 @@ const VisualisationsPicker = () => {
                     </div>
                   )}
                 <Button
-                  variant="link"
+                  variant="secondary"
+                  active={preview !== null && vis.id === preview.id}
                   onClick={() => {
                     setPreview(vis);
                   }}
+                  style={{
+                    height: 45,
+                  }}
                 >
-                  Preview
+                  🔍 Preview
                 </Button>
               </div>
             ))}
           </Col>
-          <Col>
+          <Col align="center">
             <div>
+              <h3>PREVIEW</h3>
               {preview !== null && (
                 <div>
                   <p>{preview.label}</p>
-                  <Image src={preview.imageUrl} style={{ height: "25vh" }} />
+                  <Image
+                    src={preview.imageUrl}
+                    style={{ height: "25vh", maxWidth: "50vw" }}
+                  />
                 </div>
               )}
             </div>
