@@ -6,10 +6,11 @@ import DisplayViz from "./components/DisplayViz";
 
 //image references:
 import behaviourVis from "./images/behaviour-vis.png";
-import communicationVis from "./images/communication-vis.png";
+import communicationVis from "./images/social-network.png";
 import keywordVis from "./images/keyword-vis.png";
 import mapVis from "./images/ward-map.png";
 import videoVis from "./images/video-vis.png";
+import circleENA from "./images/circle-ena.png";
 
 export default function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
@@ -19,8 +20,12 @@ export default function App() {
     commBehaviour: { size: "small", imageUrl: behaviourVis },
     commGraph: { size: "small", imageUrl: communicationVis },
     keywordVis: { size: "small", imageUrl: keywordVis },
-    mapVis: { id: "mapVis", size: "medium", imageUrl: mapVis },
+    mapVis: { size: "medium", imageUrl: mapVis },
     videoVis: { size: "large", imageUrl: videoVis },
+    circleENA: {
+      size: "small",
+      imageUrl: circleENA,
+    },
   };
 
   useEffect(() => {

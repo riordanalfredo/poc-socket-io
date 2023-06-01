@@ -6,11 +6,13 @@ import Image from "react-bootstrap/esm/Image";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 
-import communicationVis from "../images/communication-vis.png";
+import communicationVis from "../images/social-network.png";
 import mapVis from "../images/map-vis.png";
 import videoVis from "../images/video-vis.png";
 import behaviourVis from "../images/behaviour-vis.png";
 import keywordVis from "../images/keyword-vis.png";
+import circleENA from "../images/circle-ena.png";
+
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Col";
 
@@ -41,6 +43,12 @@ const visualisations = [
     label: "Keywords",
     description: "",
     imageUrl: keywordVis,
+  },
+  {
+    id: "circleENAVis",
+    label: "Circle ENA",
+    description: "",
+    imageUrl: circleENA,
   },
 ];
 const VisualisationsPicker = () => {
@@ -114,7 +122,6 @@ const VisualisationsPicker = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-
             justifyContent: "center",
             border: "1px solid lightgray",
             borderRadius: "5px",
@@ -124,69 +131,74 @@ const VisualisationsPicker = () => {
             margin: "20px",
           }}
         >
-          <Col align={"center"} style={{ overflowY: "auto" }}>
+          <Col align={"center"}>
             <h3>VISUALISATIONS</h3>
+            <small>
+              Click a button to display visualisation in monitor straightaway
+            </small>
             {visualisations.map((vis) => (
-              <div
-                key={vis.id}
-                style={{
-                  display: "inline-block",
-                  margin: "3px",
-                  position: "relative",
-                  width: "45vw",
-                }}
-              >
-                <Button
-                  disabled={
-                    selectedVis.length >= 3 &&
-                    !selectedVis.some((item) => item.id === vis.id)
-                  }
-                  onClick={() => {
-                    if (!selectedVis.some((item) => item.id === vis.id)) {
-                      selectVisualization(vis);
-                    } else {
-                      deselectVisualization(vis);
-                    }
-                  }}
-                  variant="light"
+              <>
+                <div
+                  key={vis.id}
                   style={{
-                    border: selectedVis.some((item) => item.id === vis.id)
-                      ? "5px solid limegreen"
-                      : undefined,
-                    opacity:
-                      selectedVis.length >= 3 &&
-                      !selectedVis.some((item) => item.id === vis.id)
-                        ? 0.5
-                        : 1,
-                    padding: "2px",
-                    width: 300,
-                    height: 45,
-                    marginRight: 10,
+                    display: "inline-block",
+                    margin: "3px",
+                    position: "relative",
+                    width: "35vw",
                   }}
                 >
-                  {vis.label}
-                </Button>
+                  <Button
+                    disabled={
+                      selectedVis.length >= 3 &&
+                      !selectedVis.some((item) => item.id === vis.id)
+                    }
+                    onClick={() => {
+                      if (!selectedVis.some((item) => item.id === vis.id)) {
+                        selectVisualization(vis);
+                      } else {
+                        deselectVisualization(vis);
+                      }
+                    }}
+                    variant="light"
+                    style={{
+                      border: selectedVis.some((item) => item.id === vis.id)
+                        ? "5px solid limegreen"
+                        : undefined,
+                      opacity:
+                        selectedVis.length >= 3 &&
+                        !selectedVis.some((item) => item.id === vis.id)
+                          ? 0.5
+                          : 1,
+                      padding: "2px",
+                      width: 300,
+                      height: 45,
+                      marginRight: 10,
+                    }}
+                  >
+                    {vis.label}
+                  </Button>
 
-                {selectedVis.length >= 3 &&
-                  !selectedVis.some((item) => item.id === vis.id) && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        backgroundColor: "rgba(0,0,0,0.5)",
-                        color: "white",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      Cannot display more than 3 visualisations. Please unselect
-                      a visualisation before continuing.
-                    </div>
-                  )}
+                  {selectedVis.length >= 3 &&
+                    !selectedVis.some((item) => item.id === vis.id) && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          backgroundColor: "rgba(0,0,0,0.5)",
+                          color: "white",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        Cannot display more than 3 visualisations. Please
+                        unselect a visualisation before continuing.
+                      </div>
+                    )}
+                </div>
                 <Button
                   variant="secondary"
                   active={preview !== null && vis.id === preview.id}
@@ -199,10 +211,10 @@ const VisualisationsPicker = () => {
                 >
                   🔍 Preview
                 </Button>
-              </div>
+              </>
             ))}
           </Col>
-          <Col align="center">
+          <Col align="center" style={{ overflowX: "auto" }}>
             <div>
               <h3>PREVIEW</h3>
               {preview !== null && (
@@ -210,7 +222,7 @@ const VisualisationsPicker = () => {
                   <p>{preview.label}</p>
                   <Image
                     src={preview.imageUrl}
-                    style={{ height: "25vh", maxWidth: "50vw" }}
+                    style={{ height: "35vh", maxWidth: "70vw" }}
                   />
                 </div>
               )}
